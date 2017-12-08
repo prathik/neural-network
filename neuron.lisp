@@ -20,24 +20,7 @@
 (defun sigmoid-prime (n)
   (* (sigmoid n) (- 1 (sigmoid n))))
 
-;; Main functions
-(defun neuron (inputs weights)
-  (sigmoid (multiply inputs weights)))
-
-
-(defun set-weights ()
-(setq hl-f-w '(0.8 0.2))
-(setq hl-s-w '(0.4 0.9))
-(setq hl-t-w '(0.3 0.5))
-
-(setq op-neuron-weights
-      '(0.3 0.5 0.9)))
-
-(defun hidden-layer ()
-  (cons (neuron input hl-f-w)
-	(cons  (neuron input hl-s-w)
-	       (cons (neuron input hl-t-w) ()))))
-
+;; don't call without set-weights
 (defun print-all-weights ()
   (print hl-f-w)
   (print hl-s-w)
@@ -45,7 +28,24 @@
   (print op-neuron-weights)
   (print target)
   )
-(print-all-weights)
+
+;; Main functions
+(defun neuron (inputs weights)
+  (sigmoid (multiply inputs weights)))
+
+(defun set-weights ()
+(setq hl-f-w '(0.8 0.2))
+(setq hl-s-w '(0.4 0.9))
+(setq hl-t-w '(0.3 0.5))
+(setq op-neuron-weights
+      '(0.3 0.5 0.9)))
+
+;; output of the hidden-layer that gets multiplied
+;; by the weights of the output neuron
+(defun hidden-layer ()
+  (cons (neuron input hl-f-w)
+	(cons  (neuron input hl-s-w)
+	       (cons (neuron input hl-t-w) ()))))
 
 ;; backpropagation
 ;; h-n-i = hidden layer neuron input
@@ -58,33 +58,35 @@
 (defun h-n-i-three ()
   (multiply input hl-t-w))
 
+;; change required in the output sum
 (defun delta-output-sum ()
   (* (sigmoid-prime (multiply (hidden-layer) op-neuron-weights)) (- expected target)))
 
 (defun delta-output-sum-prev ()
   (* (sigmoid-prime (multiply (hidden-layer) prev-op-neuron-weights)) (- expected target)))
 
+;; change required in the weights of output neuron
 (defun delta-op-weights ()
   (divide (delta-output-sum) (hidden-layer)))
 
-(setq prev-op-neuron-weights op-neuron-weights)
+;; updates all the weights of the output neuron
 (defun update-op-neuron ()
   (setq prev-op-neuron-weights op-neuron-weights)
   (setq op-neuron-weights
 	(mapcar #'+ op-neuron-weights (delta-op-weights))))
 
-
-(print-all-weights)
-
-(defun input-hidden-sum ()
+;; sum of hidden layer to output layer without sigmoid function
+;; applied
+(defun hidden-to-output-sum ()
   (cons (h-n-i-one) (cons (h-n-i-two) (cons (h-n-i-three) ()))))
+
+;; change required in the hidden sum
 (defun delta-hidden-sum ()
   (mapcar #'*  (divide (delta-output-sum-prev) prev-op-neuron-weights)
-	  (mapcar #'sigmoid-prime (input-hidden-sum))))
+	  (mapcar #'sigmoid-prime (hidden-to-output-sum))))
 
-(print prev-op-neuron-weights)
-(delta-hidden-sum)
-
+;; sets the right weights for each neuron
+;; of the hidden layer
 (defun set-first-neuron-weights ()
   (setq hl-f-w (cons (+ (car hl-f-w) (nth 0 (divide-list (delta-hidden-sum) (car input))))
 		     (cons (+ (car (cdr hl-f-w)) (nth 0 (divide-list (delta-hidden-sum) (car (cdr input))))) ()))))
@@ -97,13 +99,12 @@
   (setq hl-t-w (cons (+ (car hl-t-w) (nth 2 (divide-list (delta-hidden-sum) (car input))))
 		     (cons (+ (car (cdr hl-t-w)) (nth 2 (divide-list (delta-hidden-sum) (car (cdr input))))) ()))))
 
-(set-third-neuron-weights)
-
 (defun set-input-weights ()
   (set-first-neuron-weights)
   (set-second-neuron-weights)
   (set-third-neuron-weights))
 
+;; running the neural network
 (setq input '(1 1))
 (setq expected 0)
 (set-weights)
