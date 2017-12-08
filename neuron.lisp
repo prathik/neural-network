@@ -48,15 +48,20 @@
 	       (cons (neuron input hl-t-w) ()))))
 
 ;; backpropagation
-;; h-n-i = hidden layer neuron input
-(defun h-n-i-one ()
+;; h-n-o = hidden layer neuron output
+(defun h-n-o-one ()
   (multiply input hl-f-w))
 
-(defun h-n-i-two ()
+(defun h-n-o-two ()
   (multiply input hl-s-w))
 
-(defun h-n-i-three ()
+(defun h-n-o-three ()
   (multiply input hl-t-w))
+
+;; sum of hidden layer to output layer without sigmoid function
+;; applied
+(defun hidden-to-output-sum ()
+  (cons (h-n-o-one) (cons (h-n-o-two) (cons (h-n-o-three) ()))))
 
 ;; change required in the output sum
 (defun delta-output-sum ()
@@ -74,11 +79,6 @@
   (setq prev-op-neuron-weights op-neuron-weights)
   (setq op-neuron-weights
 	(mapcar #'+ op-neuron-weights (delta-op-weights))))
-
-;; sum of hidden layer to output layer without sigmoid function
-;; applied
-(defun hidden-to-output-sum ()
-  (cons (h-n-i-one) (cons (h-n-i-two) (cons (h-n-i-three) ()))))
 
 ;; change required in the hidden sum
 (defun delta-hidden-sum ()
