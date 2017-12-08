@@ -10,31 +10,31 @@ This neural network can be used to model any function that takes two binary inpu
 
 Initial weights of the neurons.
 
-![Alt text](/0.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/0.png?raw=true "Optional Title")
 
 The initial output comes to 0.77 which is an error of -0.77 (0 - 0.77) where 0 is our expected output.
 
-![Alt text](/1.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/1.png?raw=true "Optional Title")
 
 The weights have changed for all the neurons.
 
-![Alt text](/2.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/2.png?raw=true "Optional Title")
 
 The next prediction is better at 0.69.
 
-![Alt text](/3.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/3.png?raw=true "Optional Title")
 
 Weights for neurons have changed again.
 
-![Alt text](/4.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/4.png?raw=true "Optional Title")
 
 Prediction is even better at 0.46.
 
-![Alt text](/5.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/5.png?raw=true "Optional Title")
 
 The prediction further improves to 0.36.
 
-![Alt text](/6.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/prathik/neural-network/master/6.png?raw=true "Optional Title")
 
 ## Usage
 
