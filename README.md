@@ -8,6 +8,10 @@ This neural network can be used to model any function that takes two binary inpu
 
 ## Screenshots
 
+Initial weights of the neurons.
+
+![Alt text](/0.png?raw=true "Optional Title")
+
 The initial output comes to 0.77 which is an error of -0.77 (0 - 0.77) where 0 is our expected output.
 
 ![Alt text](/1.png?raw=true "Optional Title")
