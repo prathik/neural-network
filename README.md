@@ -20,6 +20,6 @@ This neural network can be used to model any function that takes two binary inpu
 (update-op-neuron)
 (set-input-weights)
 (print-all-weights)
-```lisp
+```
 
 Run the fourth, fifth and sixth line continiously and print the weights to see how the weights of each neuron gets modified.
