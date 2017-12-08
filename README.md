@@ -6,6 +6,20 @@ This was written to demonstrate a neural network in LISP.
 
 This neural network can be used to model any function that takes two binary inputs and produces one binary output.
 
+## Screenshots
+
+![Alt text](/1.png?raw=true "Optional Title")
+
+![Alt text](/2.png?raw=true "Optional Title")
+
+![Alt text](/3.png?raw=true "Optional Title")
+
+![Alt text](/4.png?raw=true "Optional Title")
+
+![Alt text](/5.png?raw=true "Optional Title")
+
+![Alt text](/6.png?raw=true "Optional Title")
+
 ## Usage
 
 ```
