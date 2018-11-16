@@ -1,10 +1,10 @@
 # Bi-Valued Neural Net written on Lisp as a POC
 
-This is a neural network implementation of the neural network given in https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/ it has the same structure and is designed for two inputs, a hidden layer with three neurons and a single output neuron.
+This is an implementation of the neural network given in https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/ it has the same structure and is designed for two inputs, a hidden layer with three neurons, and a single output neuron.
 
-This was written to demonstrate a neural network in LISP.
+This demonstrates a neural network in LISP.
 
-This neural network can be used to model any function that takes two binary inputs and produces one binary output.
+This neural network can be used to model a bi-valued binary input function.
 
 ## Screenshots
 
