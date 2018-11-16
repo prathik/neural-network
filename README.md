@@ -1,4 +1,4 @@
-# NEURAL NETWORK IN LISP
+# Bi-Valued Neural Net written on Lisp as a POC
 
 This is a neural network implementation of the neural network given in https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/ it has the same structure and is designed for two inputs, a hidden layer with three neurons and a single output neuron.
 
